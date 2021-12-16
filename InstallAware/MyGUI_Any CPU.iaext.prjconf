@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<iasettings>
+  <projectproperties>
+    <manufacturer>Bro Video</manufacturer>
+    <productname>MyGUI</productname>
+    <productversion>1.0.0.0</productversion>
+    <productcode>{ff35df0d-58b1-4c68-acda-537a29337d19}</productcode>
+    <upgradecode>{65fd5bdb-b549-4c6b-a045-7d1a405d1ecb}</upgradecode>
+    <language>0</language>
+    <languagename>English</languagename>
+  </projectproperties>
+  <summary>
+    <title>MyGUI</title>
+    <subject>MyGUI for Mystic</subject>
+    <author>Owen Evers</author>
+    <summarycomments>MyGUI v1.0 for Mystic</summarycomments>
+    <revisioncode>{07ef2ef4-3ebb-4d03-a84f-606cc8f43b0d}</revisioncode>
+    <uacelevation>highestAvailable</uacelevation>
+  </summary>
+  <addremove>
+    <publishername>Bro Video</publishername>
+    <contactname>Owen Evers</contactname>
+    <helplink />
+    <productupdatelink />
+    <addremovecomments>All Rights Reserved</addremovecomments>
+    <iconfile />
+  </addremove>
+  <codegen>
+    <generateincludefiles>0</generateincludefiles>
+    <generatefeatures>1</generatefeatures>
+    <refreshscript>0</refreshscript>
+  </codegen>
+  <compilervariables>
+    <variables />
+  </compilervariables>
+  <build>
+    <buildtype>1</buildtype>
+    <buildasmsi>True</buildasmsi>
+    <cachesources>1</cachesources>
+  </build>
+  <targetfolders />
+  <files>
+    <filedetails filename="C:\Users\Video edit\source\repos\MyGUI - Copy\bin\Debug\MyGUI.exe" targetlocation="$TARGETDIR$" type="1" generatenativeimage="0" registerassembly="0" runinstallerclass="0" createshortcut="1" runprogram="0" installfilecommand="1" VsProjectOutputfile="1" />
+  </files>
+  <dependencies />
+  <registry />
+  <dialogtheme>
+    <themename>Official</themename>
+  </dialogtheme>
+  <authenticode>
+    <sign>0</sign>
+    <mode>0</mode>
+    <certificatefile />
+    <keyfile />
+    <pfxfile />
+    <productinfourl />
+    <authpassword />
+    <timestampurl>http://time.certum.pl</timestampurl>
+    <signall>0</signall>
+  </authenticode>
+  <compression>
+    <compressiontype>6</compressiontype>
+    <encrypt>0</encrypt>
+    <compressionpassword />
+  </compression>
+  <output>
+    <outputtype>0</outputtype>
+    <location />
+    <filename />
+    <calculatefilehash>1</calculatefilehash>
+    <refreshrevisioncode>0</refreshrevisioncode>
+  </output>
+</iasettings>
