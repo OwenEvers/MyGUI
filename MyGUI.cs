@@ -4,10 +4,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Timers;
+
 
 
 namespace MyGUI
@@ -17,17 +18,25 @@ namespace MyGUI
 
     public partial class MyGUI : Form
     {
+
         public MyGUI()
         {
             InitializeComponent();
-            
+
+
 
         }
 
 
         // Variables
+        public string usr2;
+        public string usr3;
+        public string usrTerm;
+        public string usrExEd;
         public string misver;
-        public string version = " 1.001";
+        public bool extEd = false;
+        public bool term = false;
+        public string version = "";
         public string oldpath = "NOT SET";
         public string rootpath = "NOT SET";
         public string resultsInt;
@@ -39,6 +48,7 @@ namespace MyGUI
         public string sDircount;
         public string appName = @"\mystic.exe";
         public string p;
+
         public bool poll;
         public bool flag;
         public bool flagMis;
@@ -51,7 +61,7 @@ namespace MyGUI
         public string docsPath = "docs";
         public string _ChosenFile = "";
         public string[] listDirs = new string[4] { "logs", "themes", "docs", "mystic" };
-        public string[] fileExts = new string[3] { ".txt", ".asc", ".log" };
+        public string[] fileExts = new string[4] { ".txt", ".asc", ".log", ".ans" };
         public string[] CBNets = new string[] { "forced" };
         public string cbSelecteditem = "forced";
         public string procinput = "";
@@ -87,10 +97,10 @@ namespace MyGUI
         public string semaEV = "";
         public string semaON = ""; //Old Name before re name
         public string selectedDir = "";
-        public string chosenFile = @"\MyGUI.asc";
+        public string chosenFile = @"\MyGUI.asc";           //First file to show at startup
         public string root = "";
         public static int secondsCount = 0;
-        
+
 
         public void Semaphore()
         {
@@ -113,9 +123,13 @@ namespace MyGUI
             semaFN = e.Name;
             semaAT = e.ChangeType.ToString();
             semaEV = e.GetType().Name;
+            notifyIcon.BalloonTipTitle = "Event Deleted";
+            notifyIcon.BalloonTipText = semaFN;
+            notifyIcon.ShowBalloonTip(100);
 
-            bbs_Event_semaphore.Text = semaFN + " " + semaAT + " " + semaEV;
-            
+
+            bbs_Event_semaphore.Text = semaFN + " " + semaAT;
+
         }
 
         private void fsw_Created(object sender, FileSystemEventArgs e)
@@ -125,6 +139,10 @@ namespace MyGUI
             semaFN = e.Name;
             semaAT = e.ChangeType.ToString();
             //semaEV = e.GetType().Name;
+            notifyIcon.BalloonTipTitle = "BBS File Created";
+            notifyIcon.BalloonTipText = semaFN;
+            notifyIcon.ShowBalloonTip(100);
+            bbs_Event_semaphore.Text = semaFN + " " + semaAT;
 
             bbs_Event_semaphore.Text = semaFN + " " + semaAT;
 
@@ -137,11 +155,11 @@ namespace MyGUI
             semaFN = e.Name;
             semaAT = e.ChangeType.ToString();
             semaEV = e.GetType().Name;
-            notifyIcon.BalloonTipTitle = "BBS Event";
+            notifyIcon.BalloonTipTitle = "Event Update";
             notifyIcon.BalloonTipText = semaFN;
             notifyIcon.ShowBalloonTip(100);
             bbs_Event_semaphore.Text = semaFN + " " + semaAT;
-            
+
         }
         private void fsw_Renamed(object sender, RenamedEventArgs e)
         {
@@ -208,6 +226,28 @@ namespace MyGUI
             tbmysticPath.Text = actualPath;
             button1.BackColor = Color.Green;
             lbl_misyn.BackColor = Color.Green;
+            btn_Term.Enabled = false;
+            btn_ExtnEd.Enabled = false;
+            btn_Usr2.Enabled = false;
+            btn_Usr3.Enabled = false;
+            btn_Term.BackColor = Color.Yellow;
+            btn_ExtnEd.BackColor = Color.Yellow;
+            btn_Usr2.BackColor = Color.Yellow;
+            btn_Usr3.BackColor = Color.Yellow;
+            btn_ExtnEd.Text = UserOptions.Default.BtnExEdS;
+            btn_Term.Text = UserOptions.Default.BtnTermS;
+            btn_Usr2.Text = UserOptions.Default.BtnUsr2S;
+            btn_Usr3.Text = UserOptions.Default.BtnUsr3S;
+            if (UserOptions.Default.TermS != "Not Set")
+            {
+                btn_Term.BackColor = Color.Green;
+                btn_Term.Enabled = true;
+            }
+            if (UserOptions.Default.ExEdS != "Not Set")
+            {
+                btn_ExtnEd.BackColor = Color.Green;
+                btn_ExtnEd.Enabled = true;
+            }
 
         }
         public void Chk_Startup()
@@ -215,23 +255,27 @@ namespace MyGUI
             bool result = File.Exists(currentDirectory + appName);
             if (result)
             {
+
                 button1.Text = "BBS Loc..";
                 button1.Enabled = false;
                 button1.Cursor = Cursors.WaitCursor;
-                rtb_ansi.AppendText("Mystic Found at\n");
-               
                 lbl_bbsVersion.Text = misver;
                 flagMis = true;
                 rootpath = currentDirectory + appName;
                 root = currentDirectory;
-                rtb_ansi.ForeColor = Color.YellowGreen;
-                rtb_ansi.AppendText(rootpath + "\n");
-                rtb_ansi.AppendText("Directory of BBS set to \n");
+                rtb_ansi.ForeColor = Color.White;
+
+
                 locatemystic();
-                rtb_ansi.AppendText(actualPath);
+                display_bbs_open_screen();
+                rtb_ansi.AppendText("\nMystic Found\n");
+
+                rtb_ansi.AppendText("Directory of BBS set to \n");
+                rtb_ansi.AppendText(rootpath + "\n");
                 lblistFiles.Enabled = true;
                 lblistFiles.Cursor = Cursors.Hand;
-                display_bbs_open_screen();
+
+
                 readmisVersion();
                 Btn_setGreen();
                 //tbmysticPath.Clear();
@@ -250,7 +294,7 @@ namespace MyGUI
                 rtb_ansi.ForeColor = Color.Red;
                 rtb_ansi.AppendText("\n\n\n******\n NOT FOUND\n******\n MyGUI MUST be installed into the same Directory as mystic.exe\nMystic BBS");
                 lbl_misyn.BackColor = Color.Red;
-                tb_OutPut.Text = " MyGUI Install ERROR...";
+                tb_OutPut.Text = " MyGUI Install ERROR..." + nl;
                 tbmysticPath.Text = actualPath;
                 Tytle.BackColor = Color.Red;
 
@@ -361,7 +405,7 @@ namespace MyGUI
                         lbl_misyn.BackColor = Color.Green;
                         if (misRun)
                         {
-                            tb_OutPut.Text = "mis SERVER RUNNING";
+                            //tb_OutPut.Text = "mis SERVER RUNNING";
                         }
                     }
                 }
@@ -388,7 +432,7 @@ namespace MyGUI
                         lbl_misyn.BackColor = Color.Goldenrod;
                         if (!misRun)
                         {
-                            tb_OutPut.Text = "mis can be started with SRV Start";
+                            //tb_OutPut.Text = "mis can be started with SRV Start";
                         }
                     }
 
@@ -422,7 +466,7 @@ namespace MyGUI
                 stopmis.StartInfo.RedirectStandardOutput = true;
 
                 stopmis.Start();
-              
+
                 //rtb_ansi.Clear();
                 string procout = stopmis.StandardOutput.ReadToEnd();
 
@@ -431,13 +475,15 @@ namespace MyGUI
                 //Update_dirList();
                 lbl_misyn.BackColor = Color.Goldenrod;
                 misByMyGUI = false;
-                tb_OutPut.Text = procout;
+                tb_OutPut.AppendText(procout + nl);
+                //tb_OutPut.Text = procout;
                 //rtb_ansi.AppendText(procout);
             }
             else
             {
                 lbl_message.Text = "mis SERVER Stop Detected";
-                tb_OutPut.Text = "About to STOP mis";
+                //tb_OutPut.Text = "About to STOP mis";
+                tb_OutPut.AppendText("Stopping mis Server" + nl);
                 // Stop mis server
                 Process stopmis = new Process();
                 stopmis.StartInfo.FileName = root + "mis";
@@ -450,7 +496,7 @@ namespace MyGUI
                 rtb_ansi.AppendText(stopmis.StandardOutput.ReadToEnd());
                 tb_OutPut.Text = stopmis.StandardOutput.ReadToEnd();
                 //timer.Interval = 1000;
-                
+
                 misRun = false;
                 misrun();
                 //Update_dirList();
@@ -474,13 +520,42 @@ namespace MyGUI
 
         private void MyGUI_Load(object sender, EventArgs e)
         {
-            lbl_version.Text = "Version" + version;
-            tb_OutPut.Text = " ***  INITIALIZING  ***";
+            usrExEd = UserOptions.Default.ExEdS;
+            usrTerm = UserOptions.Default.TermS;
+            usr2 = UserOptions.Default.Usr2S;
+            usr3 = UserOptions.Default.Usr3S;
+            btn_ExtnEd.Text = UserOptions.Default.BtnExEdS;
+            btn_Term.Text = UserOptions.Default.BtnTermS;
+            btn_Usr2.Text = UserOptions.Default.BtnUsr2S;
+            btn_Usr3.Text = UserOptions.Default.BtnUsr3S;
+            if (usrExEd != "Not Set")
+            {
+                extEd = true;
+            }
+            if (usrTerm != "Not Set")
+            {
+                term = true;
+            }
+            Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var info = FileVersionInfo.GetVersionInfo(assembly.Location);
+            lbl_version.Text = String.Format("Version {0}", info.FileVersion);
+
+            // grt the cp437 font from resorce
+            //PrivateFontCollection ansiFont = new PrivateFontCollection();
+            // ansiFont.AddFontFile(@"C:\Users\Video edit\source\repos\MyGUI\Ac437_IBM_BIOS.ttf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    c.Font = new Font(ansiFont.Families[0],10,FontStyle.Regular);
+            //}
+
+            version = info.ProductVersion;
+            tb_OutPut.AppendText("***  MyGUI Started  ***\n");
+            //tb_OutPut.Text = " ***  INITIALIZING  ***";
             rtb_ansi.AppendText("Working Directory is \n" + currentDirectory + "\n");
             rtb_ansi.AppendText("Checking if MyGUI is installed into the BBS (Mystic) Directory \n");
             rtb_ansi.AppendText("Looking for mystic.exe\n");
             rtb_ansi.AppendText(currentDirectory + appName + "\n");
-            
+
             Chk_Startup();
             misrun();
 
@@ -581,6 +656,7 @@ namespace MyGUI
                 thisline = line;
                 ansi_colour();
 
+
             }
             lbl_message.Text = "File " + chosenFile + " displayed";
         }
@@ -591,7 +667,8 @@ namespace MyGUI
 
             lbl_message.Text = "Attempting to Start Mis Server";
             threadmisrun.Start();
-            tb_OutPut.Text = "Start mis request sent ";
+            tb_OutPut.AppendText("Start mis server" + nl);
+            //tb_OutPut.Text = "Start mis request sent ";
             misByMyGUI = true;
             lbl_misyn.BackColor = Color.Green;
 
@@ -620,7 +697,8 @@ namespace MyGUI
             cbSelecteditem = comboBoxNets.Text;
             lbl_message.Text = "Attempting to Poll NET " + comboBoxNets.Text;
             threadmisPoll.Start();
-            tb_OutPut.Text = "mis Poll request sent ";
+            tb_OutPut.AppendText("Poll request" + nl);
+            //tb_OutPut.Text = "mis Poll request sent ";
             //misByMyGUI = true;
 
         }
@@ -650,7 +728,7 @@ namespace MyGUI
 
         }
 
-       
+
 
         private void rtb_ansi_TextChanged(object sender, EventArgs e)
         {
@@ -694,6 +772,7 @@ namespace MyGUI
 
         public void ansi_colour()
         {
+            //Console.WriteLine("ansi_colour");
             stripCodes();
             rtb_ansi.AppendText("\n");
             rtb_ansi.AppendText(newline);
@@ -729,7 +808,7 @@ namespace MyGUI
             {
 
                 char charector = thisline.ElementAt(i);
-
+                //Console.Write(charector);
                 oktoadd = true;
                 if (charector == 27)
                 {
@@ -886,19 +965,7 @@ namespace MyGUI
 
         }
 
-        //private void Get_BBS_Vn()
-        //{
-        //    StreamReader reader = new StreamReader(actualPath + "mystic.dat");
 
-
-        //    String bbs_versionLine = reader.ReadLine();
-        //    int strlen = bbs_versionLine.Length;
-
-        //    String actualVersion = bbs_versionLine.Substring(1, strlen - 9); // get Version text only
-
-        //    lbl_bbsVersion.Text = actualVersion;
-        //    reader.Close();
-        //}
 
 
 
@@ -994,7 +1061,7 @@ namespace MyGUI
             {
                 sd = false;
                 lbl_message.Text = "Select  a Directory";
-                
+
             }
 
 
@@ -1012,7 +1079,8 @@ namespace MyGUI
             lbl_Chosenfile.Text = chosenFile;           // _ChosenFile = myFilepath;  full path
             display_bbs_open_screen();
             watch.Stop();
-            tb_OutPut.Text = "File Decoded " + chosenFile;
+            tb_OutPut.AppendText(chosenFile + " Displayed" + nl);
+            //tb_OutPut.Text = "File Decoded " + chosenFile;
             var elapsedMs = watch.ElapsedMilliseconds;
             lbl_timeTaken.Text = elapsedMs.ToString() + "Ms";
 
@@ -1187,7 +1255,8 @@ namespace MyGUI
 
             lbl_message.Text = "Getting Net Routs";
             threadNetRout.Start();
-            tb_OutPut.Text = "Net Routs Obtained ";
+            tb_OutPut.AppendText("NET Routs Obtained" + nl);
+            //tb_OutPut.Text = "Net Routs Obtained ";
             misByMyGUI = true;
         }
 
@@ -1207,7 +1276,7 @@ namespace MyGUI
                 //
                 startNetRout.Start();
                 procinput = startNetRout.StandardOutput.ReadToEnd();
-                rtb_ansi.AppendText(procinput);
+                //rtb_ansi.AppendText(procinput);
                 int tohere = procinput.Length;
                 int fromhere = procinput.IndexOf(")");
                 String result = procinput.Substring(fromhere + 2);
@@ -1232,7 +1301,7 @@ namespace MyGUI
             lbl_message.Text = "Net Poll List Assigns";
             threadNetList.Start();
             //tb_OutPut.Text = "Net Rout List Obtained ";
-            rtb_ansi.AppendText("Net Rout List Obtained ");
+            //rtb_ansi.AppendText("Net Rout List Obtained ");
         }
 
         public void startNetList()
@@ -1251,7 +1320,7 @@ namespace MyGUI
                 //
                 startNetList.Start();
                 procinput = startNetList.StandardOutput.ReadToEnd();
-                rtb_ansi.AppendText(procinput);
+                //rtb_ansi.AppendText(procinput);
                 var results = procinput.Split('@');
                 int frompos;
                 int PNnum = 0;
@@ -1265,7 +1334,7 @@ namespace MyGUI
                     comboBoxNets.Items.Add(thisnet);
                     PNnum++;
 
-                    rtb_ansi.AppendText("\n................\n" + thisnet);
+                    //rtb_ansi.AppendText("\n................\n" + thisnet);
                 }
                 comboBoxNets.Items.RemoveAt(PNnum + 1);
                 PNnum = PNnum + 1;
@@ -1310,6 +1379,11 @@ namespace MyGUI
             {
                 misrun();
                 secondsCount = 0;
+                UserOptions.Default.Reload();
+
+
+
+                Btn_setGreen();
             }
         }
 
@@ -1317,9 +1391,10 @@ namespace MyGUI
         {
             Thread threadReadMisVer = new Thread(startMisVer);
             rtb_ansi.AppendText("Looking for Mystic version..." + nl);
-            lbl_message.Text = "Getting Version Info";
+            lbl_message.Text = "Reading Data file Info" + nl;
             threadReadMisVer.Start();
-            tb_OutPut.Text = "Version Seek ";
+            tb_OutPut.AppendText("Getting Mystic Version" + nl);
+            //tb_OutPut.Text = "Version Seek ";
             misByMyGUI = true;
         }
 
@@ -1338,25 +1413,200 @@ namespace MyGUI
                 startGetVers.Start();
                 string proc = startGetVers.StandardOutput.ReadToEnd();
 
-                rtb_ansi.AppendText(proc);
-                
+
+
                 int tohere = proc.Length;
                 int fromhere = proc.IndexOf(".");
-                String result = proc.Substring(fromhere +7,31);
-                misver = proc.Substring(fromhere -2,9);
+                String result = proc.Substring(fromhere + 7, 31);
+                misver = proc.Substring(fromhere - 2, 9);
                 lbl_bbsVersion.Text = misver;
                 result = result.TrimStart();
                 tb_netPoll.Text = result;
-
+                rtb_ansi.AppendText(proc);
                 //misRun = tru
                 //misrun();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Get Mystic Version Error\n Check Correct Install Directory\n Check logs for more"+nl+ex);
+                MessageBox.Show("Get Mystic Version Error\n Check Correct Install Directory\n Check logs for more" + nl + ex);
 
             }
 
+
+        }
+
+        private void gbx_BBS_Actions_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {           //btn_ExtnEd
+            if (UserOptions.Default.ExEdS != "Not Set")
+            {
+                startExEd();
+            }
+            else
+            {
+
+                MessageBox.Show("You have not selected an External ANSI Editor,\nPlease use:\n Menu>Tools>Options");
+
+
+            }
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOptions formOptions = new FormOptions();
+            formOptions.Show();
+            btn_ExtnEd.Text = UserOptions.Default.BtnExEdS;
+            btn_Term.Text = UserOptions.Default.BtnTermS;
+            btn_Usr2.Text = UserOptions.Default.BtnUsr2S;
+            btn_Usr3.Text = UserOptions.Default.BtnUsr3S;
+
+        }
+
+        private void btn_Term_Click(object sender, EventArgs e)
+        {
+
+            Thread threadTerm = new Thread(startTerm);
+
+            lbl_message.Text = "Terminal Program Start";
+            threadTerm.Start();
+            tb_OutPut.AppendText("Terminal Started" + nl);
+            //tb_OutPut.Text = "Net Routs Obtained ";
+            misByMyGUI = true;
+        }
+
+        public void startTerm()
+        {
+            try
+            {
+                // Domis poll forced
+                Process startTerm = new Process();
+                startTerm.StartInfo.FileName = UserOptions.Default.TermS;
+                startTerm.StartInfo.UseShellExecute = false;
+                startTerm.StartInfo.Arguments = "";
+                startTerm.StartInfo.RedirectStandardOutput = false;
+                startTerm.StartInfo.CreateNoWindow = false;
+
+
+                //
+                startTerm.Start();
+
+            }
+            catch
+            {
+                MessageBox.Show("Error\n There was an Error starting the\nprogram you defined with this button\n Please check the location\n" + UserOptions.Default.TermS);
+
+            }
+
+
+        }
+        private void startExEd()
+        {
+
+            Thread threadExEd = new Thread(startExEdthr);
+
+            lbl_message.Text = "External Editor Program Start";
+            threadExEd.Start();
+            tb_OutPut.AppendText("External Editor Started" + nl);
+            //tb_OutPut.Text = "Net Routs Obtained ";
+            misByMyGUI = true;
+        }
+
+        public void startExEdthr()
+        {
+            try
+            {
+                // Domis poll forced
+                Process startExEd = new Process();
+                startExEd.StartInfo.FileName = UserOptions.Default.ExEdS;
+                startExEd.StartInfo.UseShellExecute = false;
+                startExEd.StartInfo.Arguments = "";
+                startExEd.StartInfo.RedirectStandardOutput = false;
+                startExEd.StartInfo.CreateNoWindow = false;
+
+
+                //
+                startExEd.Start();
+
+            }
+            catch
+            {
+                MessageBox.Show("Error\n There was an Error starting the\nprogram you defined with this button\n Please check the location\n" + UserOptions.Default.TermS);
+
+            }
+
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Ansiedit_MouseHover(object sender, EventArgs e)
+        {
+            lbl_OpenMysticAEd.Visible = true;
+        }
+
+        private void btn_Ansiedit_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_OpenMysticAEd.Visible = false;
+        }
+
+        private void btn_Textedit_MouseHover(object sender, EventArgs e)
+        {
+            lbl_OpenMystiTed.Visible = true;
+        }
+
+        private void btn_Textedit_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_OpenMystiTed.Visible = false;
+        }
+
+        private void btn_ExtnEd_MouseHover(object sender, EventArgs e)
+        {
+            lbl_OpenExToolEd.Visible = true;
+        }
+
+        private void btn_ExtnEd_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_OpenExToolEd.Visible = false;
+
+        }
+
+        private void btn_config_MouseHover(object sender, EventArgs e)
+        {
+            lbl_OpenMysConfig.Visible=true;
+        }
+
+        private void btn_config_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_OpenMysConfig.Visible = false;
+        }
+
+        private void btn_Textedit_Click(object sender, EventArgs e)
+        {
+            Thread threadText = new Thread(runTextEdit);
+            threadText.Start();
+            lbl_message.Text = "Text Editor Started for " + chosenFile;
+        }
+        public void runTextEdit()
+        {           // Start Text Edit
+            try
+            {
+                Process startTextEdit = new Process();
+                startTextEdit.StartInfo.FileName = root + "mystic";
+                startTextEdit.StartInfo.UseShellExecute = false;
+                startTextEdit.StartInfo.Arguments = "-text " + _ChosenFile;
+                startTextEdit.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open file\n" + ex);
+            }
 
         }
     }

@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MyGUI" GeneratedClassName="UserOptions">
+  <Profiles />
+  <Settings>
+    <Setting Name="ExEdS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not Set</Value>
+    </Setting>
+    <Setting Name="TermS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not Set</Value>
+    </Setting>
+    <Setting Name="Usr2S" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not Set</Value>
+    </Setting>
+    <Setting Name="Usr3S" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not Set</Value>
+    </Setting>
+    <Setting Name="BtnExEdS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tools</Value>
+    </Setting>
+    <Setting Name="BtnTermS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tools</Value>
+    </Setting>
+    <Setting Name="BtnUsr2S" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tools</Value>
+    </Setting>
+    <Setting Name="BtnUsr3S" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tools</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

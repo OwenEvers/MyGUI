@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MyGUI")]
-[assembly: AssemblyDescription("Mystic BBS GUI")]
+[assembly: AssemblyDescription("MyGUI is a tool to aid the SysOp of a Mystic BBS, It has been coded to work with Mystic V1.12 A47, some functions of MyGUI will not work with previous versions of Mystic as mis.exe V1.12 A47 is used for things like 'POLL' from that version on.   MyGUI has been coded in C# on windows 10, and requires .NET v 4.7.2 min.   This version has NOT been tested on any other system, or with anyone elses BBS. PLEASE REPORT ANY BUGS TO theparanormalpanorama@gmail.com")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Bro Video")]
+[assembly: AssemblyCompany("Owen - Paranormal Panorama BBS")]
 [assembly: AssemblyProduct("MyGUI")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.4")]
-[assembly: AssemblyFileVersion("1.0.0.4")]
+[assembly: AssemblyVersion("1.0.1.11")]
+[assembly: AssemblyFileVersion("1.0.1.11")]
 [assembly: NeutralResourcesLanguage("en-GB")]
