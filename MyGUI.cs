@@ -745,6 +745,7 @@ namespace MyGUI
             actualPath = workPath;
             WorkingDir.Text = workPath;
             lblistFiles.Items.Clear();
+            Update_dirList();
             var theseFiles = Directory.GetFiles(actualPath, "*", SearchOption.TopDirectoryOnly);
             var numFiles = 0;
             lbl_NumFiles.Text = numFiles.ToString();
@@ -1070,19 +1071,28 @@ namespace MyGUI
 
         private void lblistFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+                chosenFile = @"\";
+                chosenFile = chosenFile + lblistFiles.SelectedItem.ToString();
+                btn_Ansiedit.Enabled = true;
+                lbl_Chosenfile.Text = chosenFile;           // _ChosenFile = myFilepath;  full path
+                display_bbs_open_screen();
+                watch.Stop();
+                tb_OutPut.AppendText(chosenFile + " Displayed" + nl);
+                //tb_OutPut.Text = "File Decoded " + chosenFile;
+                var elapsedMs = watch.ElapsedMilliseconds;
+                elapsedMs /= 1000;
+                lbl_timeTaken.Text = elapsedMs.ToString() + "s";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Unable to open the file"+nl+ex.Message);
 
-            chosenFile = @"\";
-            chosenFile = chosenFile + lblistFiles.SelectedItem.ToString();
-            btn_Ansiedit.Enabled = true;
-            lbl_Chosenfile.Text = chosenFile;           // _ChosenFile = myFilepath;  full path
-            display_bbs_open_screen();
-            watch.Stop();
-            tb_OutPut.AppendText(chosenFile + " Displayed" + nl);
-            //tb_OutPut.Text = "File Decoded " + chosenFile;
-            var elapsedMs = watch.ElapsedMilliseconds;
-            lbl_timeTaken.Text = elapsedMs.ToString() + "Ms";
+            }
+           
 
         }
 
@@ -1153,6 +1163,7 @@ namespace MyGUI
             workPath = actualPath + docsPath;
             actualPath = workPath;
             WorkingDir.Text = workPath;
+            Update_dirList();
             lblistFiles.Items.Clear();
             var theseFiles = Directory.GetFiles(actualPath, "*", SearchOption.TopDirectoryOnly);
             var numFiles = 0;
