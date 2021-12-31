@@ -306,7 +306,7 @@
             this.Name = "FormOptions";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MyGUI:- Options";
+            this.Text = "MysGUI:- Options";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormOptions_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
