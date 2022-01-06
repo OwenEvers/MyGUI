@@ -48,7 +48,7 @@ namespace MyGUI
         public string sDircount;
         public string appName = @"\mystic.exe";
         public string p;
-
+        public bool notify = true;
         public bool poll;
         public bool flag;
         public bool flagMis;
@@ -104,20 +104,33 @@ namespace MyGUI
 
         public void Semaphore()
         {
-            string watchedFolder = actualPath + sema;
-            FileSystemWatcher fsw = new FileSystemWatcher(watchedFolder);
-            bbs_Event_semaphore.Text = watchedFolder;
-            fsw.IncludeSubdirectories = true;
-            fsw.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite |
-                NotifyFilters.Attributes | NotifyFilters.CreationTime;
-            fsw.Changed += fsw_Changed;
-            fsw.Renamed += fsw_Renamed;
-            fsw.Created += fsw_Created;
-            fsw.Deleted += fsw_Deleted;
-            fsw.EnableRaisingEvents = true;
+            try
+            {
+                string watchedFolder = actualPath + sema;
+                FileSystemWatcher fsw = new FileSystemWatcher(watchedFolder);
+                bbs_Event_semaphore.Text = watchedFolder;
+                fsw.IncludeSubdirectories = true;
+                fsw.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite |
+                    NotifyFilters.Attributes | NotifyFilters.CreationTime;
+                fsw.Changed += fsw_Changed;
+                fsw.Renamed += fsw_Renamed;
+                fsw.Created += fsw_Created;
+                fsw.Deleted += fsw_Deleted;
+
+
+                fsw.EnableRaisingEvents = true;
+
+
+            }
+            catch
+            {
+                lbl_message.Text = "FSW Error";
+            }
         }
         private void fsw_Deleted(object sender, FileSystemEventArgs e)
         {
+
+
             //throw new NotImplementedException();
             //semaFP = e.FullPath;
             semaFN = e.Name;
@@ -125,15 +138,22 @@ namespace MyGUI
             semaEV = e.GetType().Name;
             notifyIcon.BalloonTipTitle = "Event Deleted";
             notifyIcon.BalloonTipText = semaFN;
-            notifyIcon.ShowBalloonTip(100);
-
-
+            UserOptions.Default.Reload();
+            if (UserOptions.Default.Usr3S == "On")
+            {
+                notifyIcon.ShowBalloonTip(100);
+            }
+            
             bbs_Event_semaphore.Text = semaFN + " " + semaAT;
+
+
 
         }
 
         private void fsw_Created(object sender, FileSystemEventArgs e)
         {
+
+
             //throw new NotImplementedException();
             //semaFP = e.FullPath;
             semaFN = e.Name;
@@ -141,15 +161,24 @@ namespace MyGUI
             //semaEV = e.GetType().Name;
             notifyIcon.BalloonTipTitle = "BBS File Created";
             notifyIcon.BalloonTipText = semaFN;
-            notifyIcon.ShowBalloonTip(100);
+            UserOptions.Default.Reload();
+            if (UserOptions.Default.Usr3S == "On")
+            {
+                notifyIcon.ShowBalloonTip(100);
+            }
+            
             bbs_Event_semaphore.Text = semaFN + " " + semaAT;
 
-            bbs_Event_semaphore.Text = semaFN + " " + semaAT;
+
+
+
 
         }
 
         private void fsw_Changed(object sender, FileSystemEventArgs e)
         {
+
+
             //throw new NotImplementedException();
             //semaFP = e.FullPath;
             semaFN = e.Name;
@@ -157,19 +186,33 @@ namespace MyGUI
             semaEV = e.GetType().Name;
             notifyIcon.BalloonTipTitle = "Event Update";
             notifyIcon.BalloonTipText = semaFN;
-            notifyIcon.ShowBalloonTip(100);
+            UserOptions.Default.Reload();
+            if (UserOptions.Default.Usr3S == "On")
+            {
+                notifyIcon.ShowBalloonTip(100);
+            }
             bbs_Event_semaphore.Text = semaFN + " " + semaAT;
+
+
 
         }
         private void fsw_Renamed(object sender, RenamedEventArgs e)
         {
+
+
             //throw new NotImplementedException();
             //semaFP = e.FullPath;
             semaFN = e.Name;
             semaAT = e.ChangeType.ToString();
             semaON = e.OldName;
-
+            notifyIcon.BalloonTipText = semaFN;
             bbs_Event_semaphore.Text = ">" + semaFN + " " + semaAT + " " + semaON;
+            UserOptions.Default.Reload();
+            if (UserOptions.Default.Usr3S == "On")
+            {
+                notifyIcon.ShowBalloonTip(100);
+            }
+
 
         }
 
@@ -229,11 +272,11 @@ namespace MyGUI
             btn_Term.Enabled = false;
             btn_ExtnEd.Enabled = false;
             btn_Usr2.Enabled = false;
-            btn_Usr3.Enabled = false;
+            btn_Usr3.Enabled = true;
             btn_Term.BackColor = Color.Yellow;
             btn_ExtnEd.BackColor = Color.Yellow;
             btn_Usr2.BackColor = Color.Yellow;
-            btn_Usr3.BackColor = Color.Yellow;
+            btn_Usr3.BackColor = Color.Green;
             btn_ExtnEd.Text = UserOptions.Default.BtnExEdS;
             btn_Term.Text = UserOptions.Default.BtnTermS;
             btn_Usr2.Text = UserOptions.Default.BtnUsr2S;
@@ -247,6 +290,10 @@ namespace MyGUI
             {
                 btn_ExtnEd.BackColor = Color.Green;
                 btn_ExtnEd.Enabled = true;
+            }
+            if (UserOptions.Default.BBSnameS != "No Name")
+            {
+                lbl_BBS_Name.Text = UserOptions.Default.BBSnameS;
             }
 
         }
@@ -284,6 +331,7 @@ namespace MyGUI
                 Tytle.BackColor = Color.Green;
                 //Get_BBS_Vn();
                 loadAnsiiCodes();
+
                 Semaphore();
                 Update_dirList();
                 lblistFiles.Enabled = false;
@@ -1087,12 +1135,12 @@ namespace MyGUI
                 elapsedMs /= 1000;
                 lbl_timeTaken.Text = elapsedMs.ToString() + "s";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Unable to open the file"+nl+ex.Message);
+                MessageBox.Show("Unable to open the file" + nl + ex.Message);
 
             }
-           
+
 
         }
 
@@ -1384,6 +1432,8 @@ namespace MyGUI
 
         private void timerMis_Tick(object sender, EventArgs e)
         {
+
+
             secondsCount++;
             lbl_DateTime.Text = $"{DateTime.Now}";
             if (secondsCount == 15)
@@ -1391,7 +1441,7 @@ namespace MyGUI
                 misrun();
                 secondsCount = 0;
                 UserOptions.Default.Reload();
-
+                lbl_Notify.Text = "Notifications are " + UserOptions.Default.Usr3S;
 
 
                 Btn_setGreen();
@@ -1590,7 +1640,7 @@ namespace MyGUI
 
         private void btn_config_MouseHover(object sender, EventArgs e)
         {
-            lbl_OpenMysConfig.Visible=true;
+            lbl_OpenMysConfig.Visible = true;
         }
 
         private void btn_config_MouseLeave(object sender, EventArgs e)
@@ -1618,6 +1668,21 @@ namespace MyGUI
             {
                 MessageBox.Show("Failed to open file\n" + ex);
             }
+
+        }
+
+        private void btn_Usr3_Click(object sender, EventArgs e)
+        {
+            FormOptions formOptions = new FormOptions();
+            formOptions.Show();
+            btn_ExtnEd.Text = UserOptions.Default.BtnExEdS;
+            btn_Term.Text = UserOptions.Default.BtnTermS;
+            btn_Usr2.Text = UserOptions.Default.BtnUsr2S;
+            btn_Usr3.Text = UserOptions.Default.BtnUsr3S;
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
 
         }
     }

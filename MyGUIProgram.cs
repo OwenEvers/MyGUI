@@ -16,7 +16,7 @@ namespace MyGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
- 
+            UserOptions.Default.Reload();
             Application.Run(new MyGUI());
 
         }

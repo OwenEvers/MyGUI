@@ -61,7 +61,7 @@ namespace MyGUI {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Not Set")]
+        [global::System.Configuration.DefaultSettingValueAttribute("On")]
         public string Usr3S {
             get {
                 return ((string)(this["Usr3S"]));
@@ -109,13 +109,37 @@ namespace MyGUI {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Tools")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Options")]
         public string BtnUsr3S {
             get {
                 return ((string)(this["BtnUsr3S"]));
             }
             set {
                 this["BtnUsr3S"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("No Name")]
+        public string BBSnameS {
+            get {
+                return ((string)(this["BBSnameS"]));
+            }
+            set {
+                this["BBSnameS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("No Name")]
+        public string SysOpnameS {
+            get {
+                return ((string)(this["SysOpnameS"]));
+            }
+            set {
+                this["SysOpnameS"] = value;
             }
         }
     }

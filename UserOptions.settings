@@ -12,7 +12,7 @@
       <Value Profile="(Default)">Not Set</Value>
     </Setting>
     <Setting Name="Usr3S" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Not Set</Value>
+      <Value Profile="(Default)">On</Value>
     </Setting>
     <Setting Name="BtnExEdS" Type="System.String" Scope="User">
       <Value Profile="(Default)">Tools</Value>
@@ -24,7 +24,13 @@
       <Value Profile="(Default)">Tools</Value>
     </Setting>
     <Setting Name="BtnUsr3S" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Tools</Value>
+      <Value Profile="(Default)">Options</Value>
+    </Setting>
+    <Setting Name="BBSnameS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">No Name</Value>
+    </Setting>
+    <Setting Name="SysOpnameS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">No Name</Value>
     </Setting>
   </Settings>
 </SettingsFile>
