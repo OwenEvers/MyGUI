@@ -512,15 +512,24 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MyGUI"
+<<<<<<< HEAD
         "ProductCode" = "8:{E0EC8747-FA1C-46B6-B35C-1452EE6E01CE}"
         "PackageCode" = "8:{DB064C16-2CB1-44E7-A11E-1D1D4620B729}"
+=======
+        "ProductCode" = "8:{8E82446D-ECB9-49EA-B52A-48468E43D1F8}"
+        "PackageCode" = "8:{CB51FE90-D1F3-4A9C-8E25-2F64BA60A7A0}"
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
         "UpgradeCode" = "8:{9BBCF2EE-7463-42D8-8591-B38D8CA2788D}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
+<<<<<<< HEAD
         "ProductVersion" = "8:1.2.27"
+=======
+        "ProductVersion" = "8:1.2.15"
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
         "Manufacturer" = "8:OE"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://mygui841343679.wordpress.com/"

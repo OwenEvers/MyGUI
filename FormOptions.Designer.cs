@@ -398,7 +398,11 @@
             this.Name = "FormOptions";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+<<<<<<< HEAD
             this.Text = "MyGUI:- Tools/Options";
+=======
+            this.Text = "MysGUI:- Options";
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormOptions_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

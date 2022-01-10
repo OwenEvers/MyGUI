@@ -716,24 +716,40 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
+<<<<<<< HEAD
             this.toolStripSeparator.Size = new System.Drawing.Size(134, 6);
+=======
+            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+<<<<<<< HEAD
             this.toolStripSeparator1.Size = new System.Drawing.Size(134, 6);
+=======
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
+<<<<<<< HEAD
             this.toolStripSeparator2.Size = new System.Drawing.Size(134, 6);
+=======
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.AutoToolTip = true;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+<<<<<<< HEAD
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+=======
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.ToolTipText = "Quit MyGUI\r\n(close the program)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
@@ -749,7 +765,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -765,14 +781,14 @@
             // sRVStartToolStripMenuItem
             // 
             this.sRVStartToolStripMenuItem.Name = "sRVStartToolStripMenuItem";
-            this.sRVStartToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.sRVStartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sRVStartToolStripMenuItem.Text = "SRV Start";
             this.sRVStartToolStripMenuItem.Click += new System.EventHandler(this.sRVStartToolStripMenuItem_Click);
             // 
             // sRVStopToolStripMenuItem
             // 
             this.sRVStopToolStripMenuItem.Name = "sRVStopToolStripMenuItem";
-            this.sRVStopToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.sRVStopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sRVStopToolStripMenuItem.Text = "SRV Stop";
             this.sRVStopToolStripMenuItem.Click += new System.EventHandler(this.sRVStopToolStripMenuItem_Click);
             // 
@@ -789,21 +805,21 @@
             // localLogInToolStripMenuItem
             // 
             this.localLogInToolStripMenuItem.Name = "localLogInToolStripMenuItem";
-            this.localLogInToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.localLogInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.localLogInToolStripMenuItem.Text = "Local Log In";
             this.localLogInToolStripMenuItem.Click += new System.EventHandler(this.localLogInToolStripMenuItem_Click);
             // 
             // nodeSpyToolStripMenuItem
             // 
             this.nodeSpyToolStripMenuItem.Name = "nodeSpyToolStripMenuItem";
-            this.nodeSpyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.nodeSpyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nodeSpyToolStripMenuItem.Text = "Node Spy";
             this.nodeSpyToolStripMenuItem.Click += new System.EventHandler(this.nodeSpyToolStripMenuItem_Click);
             // 
             // bBSConfigToolStripMenuItem
             // 
             this.bBSConfigToolStripMenuItem.Name = "bBSConfigToolStripMenuItem";
-            this.bBSConfigToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.bBSConfigToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bBSConfigToolStripMenuItem.Text = "BBS Config";
             this.bBSConfigToolStripMenuItem.Click += new System.EventHandler(this.bBSConfigToolStripMenuItem_Click);
             // 
@@ -1015,7 +1031,11 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(385, 547);
+=======
+            this.label1.Location = new System.Drawing.Point(494, 547);
+>>>>>>> 23dd97f89b428b075d16bfb6e4e04a741f6f47e2
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(481, 16);
             this.label1.TabIndex = 47;
