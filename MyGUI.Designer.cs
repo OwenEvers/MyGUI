@@ -85,7 +85,6 @@
             this.localLogInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nodeSpyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bBSConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuPoll = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MyGUIhelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -98,6 +97,7 @@
             this.pathDocs = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.gbx_BBS_Control = new System.Windows.Forms.GroupBox();
+            this.lbl_BBS_Name = new System.Windows.Forms.Label();
             this.btn_Ansiedit = new System.Windows.Forms.Button();
             this.btn_Usr3 = new System.Windows.Forms.Button();
             this.btn_Term = new System.Windows.Forms.Button();
@@ -109,6 +109,7 @@
             this.gbx_Task_Report = new System.Windows.Forms.GroupBox();
             this.gbx_BBS_Files = new System.Windows.Forms.GroupBox();
             this.gbx_BBS_Actions = new System.Windows.Forms.GroupBox();
+            this.lbl_PollOption = new System.Windows.Forms.Label();
             this.lbl_OpenMysConfig = new System.Windows.Forms.Label();
             this.lbl_OpenExToolEd = new System.Windows.Forms.Label();
             this.lbl_OpenMystiTed = new System.Windows.Forms.Label();
@@ -122,7 +123,7 @@
             this.lbl_DateTime = new System.Windows.Forms.Label();
             this.lbl_RunningProgs = new System.Windows.Forms.Label();
             this.lbl_Notify = new System.Windows.Forms.Label();
-            this.lbl_BBS_Name = new System.Windows.Forms.Label();
+            this.lbl_Serv = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenuNOTIFY.SuspendLayout();
@@ -203,7 +204,7 @@
             this.lbFileList.Margin = new System.Windows.Forms.Padding(4, 3, 3, 3);
             this.lbFileList.Name = "lbFileList";
             this.lbFileList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbFileList.Size = new System.Drawing.Size(224, 148);
+            this.lbFileList.Size = new System.Drawing.Size(201, 148);
             this.lbFileList.TabIndex = 4;
             this.lbFileList.SelectedIndexChanged += new System.EventHandler(this.lbFileList_SelectedIndexChanged);
             // 
@@ -365,7 +366,7 @@
             this.btn_config.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_config.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_config.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_config.Location = new System.Drawing.Point(6, 98);
+            this.btn_config.Location = new System.Drawing.Point(6, 74);
             this.btn_config.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_config.Name = "btn_config";
             this.btn_config.Size = new System.Drawing.Size(78, 20);
@@ -488,6 +489,8 @@
             this.btn_misPoll.Text = "Poll NET >";
             this.btn_misPoll.UseVisualStyleBackColor = true;
             this.btn_misPoll.Click += new System.EventHandler(this.btn_misPoll_Click);
+            this.btn_misPoll.MouseLeave += new System.EventHandler(this.btn_misPoll_MouseLeave);
+            this.btn_misPoll.MouseHover += new System.EventHandler(this.btn_misPoll_MouseHover);
             // 
             // tb_netPoll
             // 
@@ -569,10 +572,10 @@
             // 
             this.bbs_Event.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bbs_Event.Font = new System.Drawing.Font("Video Terminal Screen", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbs_Event.Location = new System.Drawing.Point(318, 475);
+            this.bbs_Event.Location = new System.Drawing.Point(318, 479);
             this.bbs_Event.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bbs_Event.Name = "bbs_Event";
-            this.bbs_Event.Size = new System.Drawing.Size(84, 31);
+            this.bbs_Event.Size = new System.Drawing.Size(84, 27);
             this.bbs_Event.TabIndex = 31;
             this.bbs_Event.Text = "Event >";
             this.bbs_Event.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -583,10 +586,10 @@
             this.bbs_Event_semaphore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bbs_Event_semaphore.Font = new System.Drawing.Font("Video Terminal Screen", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbs_Event_semaphore.Location = new System.Drawing.Point(408, 477);
+            this.bbs_Event_semaphore.Location = new System.Drawing.Point(408, 479);
             this.bbs_Event_semaphore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bbs_Event_semaphore.Name = "bbs_Event_semaphore";
-            this.bbs_Event_semaphore.Size = new System.Drawing.Size(454, 25);
+            this.bbs_Event_semaphore.Size = new System.Drawing.Size(454, 27);
             this.bbs_Event_semaphore.TabIndex = 32;
             this.bbs_Event_semaphore.Text = "Waiting";
             this.bbs_Event_semaphore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -609,10 +612,10 @@
             this.lblistFiles.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblistFiles.FormattingEnabled = true;
             this.lblistFiles.ItemHeight = 20;
-            this.lblistFiles.Location = new System.Drawing.Point(696, 292);
+            this.lblistFiles.Location = new System.Drawing.Point(674, 292);
             this.lblistFiles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lblistFiles.Name = "lblistFiles";
-            this.lblistFiles.Size = new System.Drawing.Size(170, 124);
+            this.lblistFiles.Size = new System.Drawing.Size(192, 124);
             this.lblistFiles.TabIndex = 34;
             this.lblistFiles.SelectedIndexChanged += new System.EventHandler(this.lblistFiles_SelectedIndexChanged);
             // 
@@ -689,7 +692,6 @@
             this.toolsToolStripMenuItem,
             this.toolStripMenuSRV,
             this.toolStripMenuBBS,
-            this.toolStripMenuPoll,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -805,15 +807,6 @@
             this.bBSConfigToolStripMenuItem.Text = "BBS Config";
             this.bBSConfigToolStripMenuItem.Click += new System.EventHandler(this.bBSConfigToolStripMenuItem_Click);
             // 
-            // toolStripMenuPoll
-            // 
-            this.toolStripMenuPoll.CheckOnClick = true;
-            this.toolStripMenuPoll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripMenuPoll.Name = "toolStripMenuPoll";
-            this.toolStripMenuPoll.Size = new System.Drawing.Size(42, 20);
-            this.toolStripMenuPoll.Text = "Poll";
-            this.toolStripMenuPoll.ToolTipText = "Poll NETS (forced)";
-            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -920,6 +913,18 @@
             this.gbx_BBS_Control.TabStop = false;
             this.gbx_BBS_Control.Text = "  BBS  ";
             // 
+            // lbl_BBS_Name
+            // 
+            this.lbl_BBS_Name.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbl_BBS_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_BBS_Name.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_BBS_Name.Location = new System.Drawing.Point(60, 0);
+            this.lbl_BBS_Name.Name = "lbl_BBS_Name";
+            this.lbl_BBS_Name.Size = new System.Drawing.Size(183, 22);
+            this.lbl_BBS_Name.TabIndex = 24;
+            this.lbl_BBS_Name.Text = "Set in Tools/Options";
+            this.lbl_BBS_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // btn_Ansiedit
             // 
             this.btn_Ansiedit.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -942,10 +947,10 @@
             this.btn_Usr3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Usr3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Usr3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Usr3.Location = new System.Drawing.Point(168, 165);
+            this.btn_Usr3.Location = new System.Drawing.Point(6, 99);
             this.btn_Usr3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_Usr3.Name = "btn_Usr3";
-            this.btn_Usr3.Size = new System.Drawing.Size(76, 20);
+            this.btn_Usr3.Size = new System.Drawing.Size(80, 20);
             this.btn_Usr3.TabIndex = 42;
             this.btn_Usr3.Text = "Unused";
             this.btn_Usr3.UseVisualStyleBackColor = true;
@@ -984,7 +989,7 @@
             this.btn_ExtnEd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_ExtnEd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_ExtnEd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ExtnEd.Location = new System.Drawing.Point(6, 75);
+            this.btn_ExtnEd.Location = new System.Drawing.Point(165, 165);
             this.btn_ExtnEd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_ExtnEd.Name = "btn_ExtnEd";
             this.btn_ExtnEd.Size = new System.Drawing.Size(78, 20);
@@ -1065,6 +1070,7 @@
             // 
             this.gbx_BBS_Actions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.gbx_BBS_Actions.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.gbx_BBS_Actions.Controls.Add(this.lbl_PollOption);
             this.gbx_BBS_Actions.Controls.Add(this.lbl_OpenMysConfig);
             this.gbx_BBS_Actions.Controls.Add(this.lbl_OpenExToolEd);
             this.gbx_BBS_Actions.Controls.Add(this.lbl_OpenMystiTed);
@@ -1089,11 +1095,21 @@
             this.gbx_BBS_Actions.Text = "BBS Tools";
             this.gbx_BBS_Actions.Enter += new System.EventHandler(this.gbx_BBS_Actions_Enter);
             // 
+            // lbl_PollOption
+            // 
+            this.lbl_PollOption.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_PollOption.Location = new System.Drawing.Point(90, 4);
+            this.lbl_PollOption.Name = "lbl_PollOption";
+            this.lbl_PollOption.Size = new System.Drawing.Size(147, 21);
+            this.lbl_PollOption.TabIndex = 55;
+            this.lbl_PollOption.Text = "Select from Drop Down";
+            this.lbl_PollOption.Visible = false;
+            // 
             // lbl_OpenMysConfig
             // 
             this.lbl_OpenMysConfig.BackColor = System.Drawing.SystemColors.ControlDark;
             this.lbl_OpenMysConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OpenMysConfig.Location = new System.Drawing.Point(91, 100);
+            this.lbl_OpenMysConfig.Location = new System.Drawing.Point(93, 4);
             this.lbl_OpenMysConfig.Name = "lbl_OpenMysConfig";
             this.lbl_OpenMysConfig.Size = new System.Drawing.Size(150, 18);
             this.lbl_OpenMysConfig.TabIndex = 54;
@@ -1104,7 +1120,7 @@
             // 
             this.lbl_OpenExToolEd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.lbl_OpenExToolEd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OpenExToolEd.Location = new System.Drawing.Point(91, 77);
+            this.lbl_OpenExToolEd.Location = new System.Drawing.Point(91, 7);
             this.lbl_OpenExToolEd.Name = "lbl_OpenExToolEd";
             this.lbl_OpenExToolEd.Size = new System.Drawing.Size(150, 18);
             this.lbl_OpenExToolEd.TabIndex = 53;
@@ -1116,7 +1132,7 @@
             // 
             this.lbl_OpenMystiTed.BackColor = System.Drawing.SystemColors.ControlDark;
             this.lbl_OpenMystiTed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OpenMystiTed.Location = new System.Drawing.Point(91, 50);
+            this.lbl_OpenMystiTed.Location = new System.Drawing.Point(88, 7);
             this.lbl_OpenMystiTed.Name = "lbl_OpenMystiTed";
             this.lbl_OpenMystiTed.Size = new System.Drawing.Size(150, 18);
             this.lbl_OpenMystiTed.TabIndex = 52;
@@ -1127,7 +1143,7 @@
             // 
             this.lbl_OpenMysticAEd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.lbl_OpenMysticAEd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OpenMysticAEd.Location = new System.Drawing.Point(91, 25);
+            this.lbl_OpenMysticAEd.Location = new System.Drawing.Point(90, 4);
             this.lbl_OpenMysticAEd.Name = "lbl_OpenMysticAEd";
             this.lbl_OpenMysticAEd.Size = new System.Drawing.Size(150, 18);
             this.lbl_OpenMysticAEd.TabIndex = 51;
@@ -1207,9 +1223,9 @@
             this.lbl_DateTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_DateTime.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lbl_DateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DateTime.Location = new System.Drawing.Point(699, 0);
+            this.lbl_DateTime.Location = new System.Drawing.Point(699, 3);
             this.lbl_DateTime.Name = "lbl_DateTime";
-            this.lbl_DateTime.Size = new System.Drawing.Size(168, 25);
+            this.lbl_DateTime.Size = new System.Drawing.Size(168, 19);
             this.lbl_DateTime.TabIndex = 54;
             this.lbl_DateTime.Text = "Date Time";
             this.lbl_DateTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1219,9 +1235,9 @@
             this.lbl_RunningProgs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_RunningProgs.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lbl_RunningProgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RunningProgs.Location = new System.Drawing.Point(534, 0);
+            this.lbl_RunningProgs.Location = new System.Drawing.Point(534, 3);
             this.lbl_RunningProgs.Name = "lbl_RunningProgs";
-            this.lbl_RunningProgs.Size = new System.Drawing.Size(166, 25);
+            this.lbl_RunningProgs.Size = new System.Drawing.Size(166, 19);
             this.lbl_RunningProgs.TabIndex = 55;
             this.lbl_RunningProgs.Text = "Running Progs";
             this.lbl_RunningProgs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1231,24 +1247,23 @@
             this.lbl_Notify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Notify.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lbl_Notify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Notify.Location = new System.Drawing.Point(407, 2);
+            this.lbl_Notify.Location = new System.Drawing.Point(407, 3);
             this.lbl_Notify.Name = "lbl_Notify";
-            this.lbl_Notify.Size = new System.Drawing.Size(143, 24);
+            this.lbl_Notify.Size = new System.Drawing.Size(143, 19);
             this.lbl_Notify.TabIndex = 56;
             this.lbl_Notify.Text = "Notifications are ";
             this.lbl_Notify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbl_BBS_Name
+            // lbl_Serv
             // 
-            this.lbl_BBS_Name.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbl_BBS_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BBS_Name.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_BBS_Name.Location = new System.Drawing.Point(60, 0);
-            this.lbl_BBS_Name.Name = "lbl_BBS_Name";
-            this.lbl_BBS_Name.Size = new System.Drawing.Size(183, 22);
-            this.lbl_BBS_Name.TabIndex = 24;
-            this.lbl_BBS_Name.Text = "Set in Tools/Options";
-            this.lbl_BBS_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_Serv.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lbl_Serv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Serv.Location = new System.Drawing.Point(265, 3);
+            this.lbl_Serv.Name = "lbl_Serv";
+            this.lbl_Serv.Size = new System.Drawing.Size(137, 19);
+            this.lbl_Serv.TabIndex = 57;
+            this.lbl_Serv.Text = "Server Not Running";
+            this.lbl_Serv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MyGUI
             // 
@@ -1258,6 +1273,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(867, 565);
             this.ContextMenuStrip = this.contextMenuNOTIFY;
+            this.Controls.Add(this.lbl_Serv);
             this.Controls.Add(this.lbl_Notify);
             this.Controls.Add(this.lbl_version);
             this.Controls.Add(this.lbl_options);
@@ -1364,7 +1380,6 @@
         private System.Windows.Forms.Label lbl_AnsiiCodeNo;
         private System.Windows.Forms.Button btn_op_Docs;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuPoll;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuBBS;
         private System.Windows.Forms.ToolStripMenuItem localLogInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nodeSpyToolStripMenuItem;
@@ -1416,6 +1431,8 @@
         protected internal System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Label lbl_Notify;
         private System.Windows.Forms.Label lbl_BBS_Name;
+        private System.Windows.Forms.Label lbl_PollOption;
+        private System.Windows.Forms.Label lbl_Serv;
     }
 }
 

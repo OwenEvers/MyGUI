@@ -81,7 +81,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.86996F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.13004F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel1.Controls.Add(this.lbl_NameSysOp, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.lbl_BBSname, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -117,9 +117,9 @@
             // 
             // lbl_NameSysOp
             // 
-            this.lbl_NameSysOp.Location = new System.Drawing.Point(107, 149);
+            this.lbl_NameSysOp.Location = new System.Drawing.Point(106, 149);
             this.lbl_NameSysOp.Name = "lbl_NameSysOp";
-            this.lbl_NameSysOp.Size = new System.Drawing.Size(325, 23);
+            this.lbl_NameSysOp.Size = new System.Drawing.Size(322, 23);
             this.lbl_NameSysOp.TabIndex = 16;
             this.lbl_NameSysOp.Text = "...";
             this.lbl_NameSysOp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -128,7 +128,7 @@
             // 
             this.lbl_BBSname.Location = new System.Drawing.Point(6, 120);
             this.lbl_BBSname.Name = "lbl_BBSname";
-            this.lbl_BBSname.Size = new System.Drawing.Size(92, 23);
+            this.lbl_BBSname.Size = new System.Drawing.Size(91, 23);
             this.lbl_BBSname.TabIndex = 8;
             this.lbl_BBSname.Text = "BBS Name";
             this.lbl_BBSname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,7 +137,7 @@
             // 
             this.label1.Location = new System.Drawing.Point(6, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 23);
+            this.label1.Size = new System.Drawing.Size(91, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "External Editor";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,7 +146,7 @@
             // 
             this.label2.Location = new System.Drawing.Point(6, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 23);
+            this.label2.Size = new System.Drawing.Size(91, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Terminal";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,7 +155,7 @@
             // 
             this.label3.Location = new System.Drawing.Point(6, 62);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 23);
+            this.label3.Size = new System.Drawing.Size(91, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "User 2";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -211,9 +211,9 @@
             // 
             this.lbl_ExEd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_ExEd.Location = new System.Drawing.Point(107, 3);
+            this.lbl_ExEd.Location = new System.Drawing.Point(106, 3);
             this.lbl_ExEd.Name = "lbl_ExEd";
-            this.lbl_ExEd.Size = new System.Drawing.Size(325, 24);
+            this.lbl_ExEd.Size = new System.Drawing.Size(322, 24);
             this.lbl_ExEd.TabIndex = 8;
             this.lbl_ExEd.Text = "...";
             this.lbl_ExEd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -222,9 +222,9 @@
             // 
             this.lbl_Term.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_Term.Location = new System.Drawing.Point(107, 34);
+            this.lbl_Term.Location = new System.Drawing.Point(106, 34);
             this.lbl_Term.Name = "lbl_Term";
-            this.lbl_Term.Size = new System.Drawing.Size(325, 25);
+            this.lbl_Term.Size = new System.Drawing.Size(322, 25);
             this.lbl_Term.TabIndex = 9;
             this.lbl_Term.Text = "...";
             this.lbl_Term.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -233,9 +233,9 @@
             // 
             this.lbl_Usr2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_Usr2.Location = new System.Drawing.Point(107, 62);
+            this.lbl_Usr2.Location = new System.Drawing.Point(106, 62);
             this.lbl_Usr2.Name = "lbl_Usr2";
-            this.lbl_Usr2.Size = new System.Drawing.Size(325, 26);
+            this.lbl_Usr2.Size = new System.Drawing.Size(322, 26);
             this.lbl_Usr2.TabIndex = 10;
             this.lbl_Usr2.Text = "...";
             this.lbl_Usr2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -244,7 +244,7 @@
             // 
             this.label4.Location = new System.Drawing.Point(6, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 23);
+            this.label4.Size = new System.Drawing.Size(91, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Notifications";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -277,16 +277,16 @@
             // 
             this.lbl_SysOpName.Location = new System.Drawing.Point(6, 149);
             this.lbl_SysOpName.Name = "lbl_SysOpName";
-            this.lbl_SysOpName.Size = new System.Drawing.Size(92, 20);
+            this.lbl_SysOpName.Size = new System.Drawing.Size(91, 20);
             this.lbl_SysOpName.TabIndex = 12;
             this.lbl_SysOpName.Text = "SysOp Name";
             this.lbl_SysOpName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_NameBBS
             // 
-            this.lbl_NameBBS.Location = new System.Drawing.Point(107, 120);
+            this.lbl_NameBBS.Location = new System.Drawing.Point(106, 120);
             this.lbl_NameBBS.Name = "lbl_NameBBS";
-            this.lbl_NameBBS.Size = new System.Drawing.Size(325, 23);
+            this.lbl_NameBBS.Size = new System.Drawing.Size(322, 23);
             this.lbl_NameBBS.TabIndex = 15;
             this.lbl_NameBBS.Text = "...";
             this.lbl_NameBBS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -295,9 +295,9 @@
             // 
             this.lbl_Usr3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_Usr3.Location = new System.Drawing.Point(107, 91);
+            this.lbl_Usr3.Location = new System.Drawing.Point(106, 91);
             this.lbl_Usr3.Name = "lbl_Usr3";
-            this.lbl_Usr3.Size = new System.Drawing.Size(325, 23);
+            this.lbl_Usr3.Size = new System.Drawing.Size(322, 23);
             this.lbl_Usr3.TabIndex = 11;
             this.lbl_Usr3.Text = "...";
             this.lbl_Usr3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -398,7 +398,7 @@
             this.Name = "FormOptions";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MysGUI:- Options";
+            this.Text = "MyGUI:- Tools/Options";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormOptions_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -143,7 +143,7 @@ namespace MyGUI
             {
                 notifyIcon.ShowBalloonTip(100);
             }
-            
+
             bbs_Event_semaphore.Text = semaFN + " " + semaAT;
 
 
@@ -166,7 +166,7 @@ namespace MyGUI
             {
                 notifyIcon.ShowBalloonTip(100);
             }
-            
+
             bbs_Event_semaphore.Text = semaFN + " " + semaAT;
 
 
@@ -351,9 +351,9 @@ namespace MyGUI
                 MessageBox.Show("MyGUI is located at\n" +
                        currentDirectory + "\n" +
                        "Mystic NOT FOUND in this DIR\n" +
-                       "\n\nMyGUI must be in the same DIR as mystic.exe,\n\n\nPlease Move MyGUI to\n" +
+                       "\n\nMyGUI must be in the same DIR as mystic.exe,\n\n\nPlease re install to\n" +
                        "the same Directory as mystic.exe" +
-                       "\nAnd RE-START MyGUI FROM THAT LOCATION",
+                       "\n",
                        "MyGUI Install ERROR...", MessageBoxButtons.OK);
             }
         }
@@ -441,7 +441,8 @@ namespace MyGUI
                     btn_misPoll.Enabled = true;
                     btn_misPoll.BackColor = Color.Green;
                     tb_netPoll.Enabled = true;
-                    lbl_message.Text = "mis SERVER RUNNUNG";
+                    lbl_message.Text = "Ready";
+                    lbl_Serv.Text = "Server Running";
                     lbl_message.BackColor = Color.Green;
                     lbl_mis.Visible = false;
                     lbl_mis2.ForeColor = Color.Red;
@@ -462,7 +463,8 @@ namespace MyGUI
                     count = count + 1;
                     //MessageBox.Show("mis NOT Found");
                     lbl_RunningProgs.Text = "Running Progs " + count;
-                    lbl_message.Text = "*** mis SERVER is NOT running *** ";
+                    //lbl_message.Text = "*** mis SERVER is NOT running *** ";
+                    lbl_Serv.Text = "Server NOT Running";
                     lbl_message.BackColor = Color.Red;
                     lbl_mis.Visible = true;
                     lbl_mis.Text = "< SRV";
@@ -769,7 +771,7 @@ namespace MyGUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Poll Error\n" + ex + "\n Check logs for more");
+                MessageBox.Show("Poll Error\n" + ex);
 
             }
 
@@ -1347,7 +1349,7 @@ namespace MyGUI
             }
             catch
             {
-                MessageBox.Show("Poll Error\n Check Correct Install Directory\n Check logs for more");
+                MessageBox.Show("Poll Error\n Check Correct Install Directory");
 
             }
 
@@ -1489,7 +1491,7 @@ namespace MyGUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Get Mystic Version Error\n Check Correct Install Directory\n Check logs for more" + nl + ex);
+                MessageBox.Show("Get Mystic Version Error\n Check Correct Install Directory\n "+ ex);
 
             }
 
@@ -1684,6 +1686,16 @@ namespace MyGUI
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void btn_misPoll_MouseHover(object sender, EventArgs e)
+        {
+            lbl_PollOption.Visible = true;
+        }
+
+        private void btn_misPoll_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_PollOption.Visible = false;
         }
     }
 
